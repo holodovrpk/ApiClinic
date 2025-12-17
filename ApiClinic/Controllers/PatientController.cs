@@ -89,12 +89,32 @@ namespace ApiClinic.Controllers
 
             // Обновляем данные пациента
             p.FullName = newPatient.FullName;
+            p.Address = newPatient.Address;
+       
 
             // Сохраняем изменения в базе данных
             db.SaveChanges();
 
             // Возвращаем обновлённого пациента
             return Ok(newPatient);
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult DelPatientById(int id)
+        {
+            // Ищем пациента по PatientId
+            var p = db.Patients.FirstOrDefault(p => p.PatientId == id);
+
+            // Если пациент не найден — возвращаем 404 (NotFound)
+            if (p == null)
+                return NotFound();
+
+            db.Patients.Remove(p);
+            db.SaveChanges();
+
+            // Если найден — возвращаем данные пациента
+            return Ok(p);
         }
     }
 }

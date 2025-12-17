@@ -43,11 +43,16 @@ namespace EFMedical.Models
         //  - дополнительные параметры EF Core
         //
         // Эти настройки передаются из Program.cs
+
+
+
         public ClinicContext(DbContextOptions<ClinicContext> options)
             : base(options)
         {
             // Внутри конструктора обычно ничего не пишут
             // Вся настройка происходит через options
         }
+
+       
     }
 }
