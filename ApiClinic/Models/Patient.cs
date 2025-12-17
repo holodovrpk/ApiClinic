@@ -27,6 +27,6 @@ namespace EFMedical.Models
 
         // Навигационное свойство — список всех приёмов, связанных с этим пациентом
         // (один пациент может иметь несколько приёмов)
-        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
     }
 }
